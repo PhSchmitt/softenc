@@ -1,5 +1,4 @@
-/home/philipp/AndroidStudioProjects/softenc/obj/local/armeabi/objs/softenc/native.o: \
- /home/philipp/AndroidStudioProjects/softenc/jni/native.c \
+obj/local/armeabi/objs/softenc/native.o: jni/native.c \
  /home/philipp/ndkandroid/android-ndk-r10e/platforms/android-3/arch-arm/usr/include/jni.h \
  /home/philipp/ndkandroid/android-ndk-r10e/platforms/android-3/arch-arm/usr/include/sys/cdefs.h \
  /home/philipp/ndkandroid/android-ndk-r10e/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h \

@@ -1,7 +1,7 @@
 package de.unikl.cs.disco.softenc;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,8 +10,11 @@ import android.widget.Button;
 
 import java.util.Arrays;
 
-import static de.unikl.cs.disco.softenc.SoftencActivity.Direction.*;
-import static de.unikl.cs.disco.softenc.SoftencActivity.Operation.*;
+import static de.unikl.cs.disco.softenc.SoftencActivity.Direction.left;
+import static de.unikl.cs.disco.softenc.SoftencActivity.Direction.noDirection;
+import static de.unikl.cs.disco.softenc.SoftencActivity.Direction.right;
+import static de.unikl.cs.disco.softenc.SoftencActivity.Operation.and;
+import static de.unikl.cs.disco.softenc.SoftencActivity.Operation.or;
 
 
 public class SoftencActivity extends ActionBarActivity {
@@ -54,19 +57,20 @@ public class SoftencActivity extends ActionBarActivity {
         buttonData.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 //                 Perform action on click
-                char[] splittedRawData = testData.toCharArray();
-                char[] encryptedData = new char[splittedRawData.length];
+                char[] unencryptedData = testData.toCharArray();
+                char[] encryptedData = new char[unencryptedData.length];
                 //TODO: run in parallel if possible
-                for (int i = 0; i < splittedRawData.length - 1; i++) {
-                    encryptedData[i] = encryptData(splittedRawData[i]);
+                for (int i = 0; i < unencryptedData.length - 1; i++) {
+                    encryptedData[i] = encryptData(unencryptedData[i]);
                 }
                 //+1 in case of not by 4 dividable
-                char[] aprimes = new char[(splittedRawData.length / 4) + 1];
-                char[] bprimes = new char[(splittedRawData.length / 4) + 1];
-                char[] cprimes = new char[(splittedRawData.length / 4) + 1];
-                char[] dprimes = new char[(splittedRawData.length / 4) + 1];
-                combineData(aprimes, bprimes, cprimes, dprimes, encryptedData);
-                sendData(new String(aprimes), new String(bprimes), new String(cprimes), new String(dprimes));
+                sendData(new String(encryptedData),new String(encryptedData),new String(encryptedData),new String(encryptedData));
+//                char[] aprimes = new char[(unencryptedData.length / 4) + 1];
+//                char[] bprimes = new char[(unencryptedData.length / 4) + 1];
+//                char[] cprimes = new char[(unencryptedData.length / 4) + 1];
+//                char[] dprimes = new char[(unencryptedData.length / 4) + 1];
+//                combineData(aprimes, bprimes, cprimes, dprimes, encryptedData);
+//                sendData(new String(aprimes), new String(bprimes), new String(cprimes), new String(dprimes));
                 buttonData.setText("Data sent");
             }
         });
@@ -181,12 +185,6 @@ public class SoftencActivity extends ActionBarActivity {
 
     }
 
-    public enum Direction
-    {
-        left,
-        right,
-        noDirection
-    }
     public char shiftBits(char toShift, int shiftcount, Direction direction)
     {
         char tmp = toShift;
@@ -203,13 +201,6 @@ public class SoftencActivity extends ActionBarActivity {
         return tmp;
     }
 
-    public enum Operation
-    {
-        and,
-        or,
-        xor,
-        noOperation
-    }
     public char maskChar (char toMask, char mask, Operation operation)
     {
         char tmp = toMask;
@@ -233,7 +224,8 @@ public class SoftencActivity extends ActionBarActivity {
     {
         //TODO pktcntr
         boolean splitPackets = false;
-        char dataIdAndPktCntr = 0;
+        // we need a 1 on the msb of the counter since leading zeros get lost in conversion/transmission
+        char dataIdAndPktCntr = 0x2000;
         //only test for asend since len(asend)=len(bsend)=len(csend)=len(dsend)
         if (asend.length()>372)
         {
@@ -249,13 +241,11 @@ public class SoftencActivity extends ActionBarActivity {
             //set dataId to 00 (=a)
             // is same to cleared
             char maskToClearDataId = 0x3fff;
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
-            Log.w("String a' send: ",asend);
-            Log.w("String a' len: ", ""+asend.length());
-            String toSend = new String (dataIdAndPktCntr + asend);
-            Log.w("String a'to send: ",toSend);
-            Log.w("String a'to len: ", ""+toSend.length());
-            int errorcode = sendUrgent(hostname, port, toSend, false);
+            dataIdAndPktCntr = maskChar(dataIdAndPktCntr, maskToClearDataId, and);
+
+            Log.w("Send string",asend);
+            Log.w("send string len",""+asend.length());
+            int errorcode = sendUrgent(hostname, port, dataIdAndPktCntr + asend, false);
             if (0 == errorcode) {
                 helloLog("data sent");
             } else {
@@ -267,12 +257,7 @@ public class SoftencActivity extends ActionBarActivity {
             dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
             char maskBprimeStream = 0x4000;
             dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskBprimeStream,or);
-            Log.w("String b' send: ", bsend);
-            Log.w("String b' len: ", "" + bsend.length());
-            toSend = new String (dataIdAndPktCntr + bsend);
-            Log.w("String b'to send: ",toSend);
-            Log.w("String b'to len: ", ""+toSend.length());
-            errorcode = sendUrgent(hostname, port, toSend, false);
+            errorcode = sendUrgent(hostname, port, dataIdAndPktCntr + bsend, false);
             if (0 == errorcode) {
                 helloLog("data sent");
             } else {
@@ -284,12 +269,7 @@ public class SoftencActivity extends ActionBarActivity {
             dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
             char maskCprimeStream = 0x8000;
             dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskCprimeStream,or);
-            Log.w("String c' send: ", csend);
-            Log.w("String c' len: ", "" + csend.length());
-            toSend = new String (dataIdAndPktCntr + csend);
-            Log.w("String c'to send: ",toSend);
-            Log.w("String c'to len: ", ""+toSend.length());
-            errorcode = sendUrgent(hostname, port,toSend, false);
+            errorcode = sendUrgent(hostname, port,dataIdAndPktCntr + csend, false);
             if (0 == errorcode) {
                 helloLog("data sent");
             } else {
@@ -301,12 +281,7 @@ public class SoftencActivity extends ActionBarActivity {
             dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
             char maskDprimeStream = 0xC000;
             dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskDprimeStream,or);
-            Log.w("String d' send: ",dsend);
-            Log.w("String d' len: ", "" + dsend.length());
-            toSend = new String (dataIdAndPktCntr + dsend);
-            Log.w("String d'to send: ",toSend);
-            Log.w("String d'to len: ", ""+toSend.length());
-            errorcode = sendUrgent(hostname, port, toSend, true);
+            errorcode = sendUrgent(hostname, port, dataIdAndPktCntr + dsend, true);
             if (0 == errorcode) {
                 helloLog("data sent");
             } else {
@@ -316,4 +291,19 @@ public class SoftencActivity extends ActionBarActivity {
             e.printStackTrace();
         }
     }
+    public enum Direction
+    {
+        left,
+        right,
+        noDirection
+    }
+
+    public enum Operation
+    {
+        and,
+        or,
+        xor,
+        noOperation
+    }
 }
+
