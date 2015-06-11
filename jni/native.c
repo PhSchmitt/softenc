@@ -13,25 +13,14 @@
 
 #include <errno.h>
 
-#define DEBUG_TAG "NDK_SoftencActivity"
+#define DEBUG_TAG "Softenc"
 
-void Java_de_unikl_cs_disco_softenc_SoftencActivity_helloLog(JNIEnv * env, jobject this, jstring logThis)
+void logcatError(const char *msg)
 {
-    jboolean isCopy;
-    const char * szLogThis = (*env)->GetStringUTFChars(env, logThis, &isCopy);
-
-    __android_log_print(ANDROID_LOG_DEBUG, DEBUG_TAG, "NDK:LC: [%s]", szLogThis);
-
-    (*env)->ReleaseStringUTFChars(env, logThis, szLogThis);
+    __android_log_print(ANDROID_LOG_ERROR, DEBUG_TAG, "NDK:LC:ERR: [%s], Errno: %i", msg, errno);
 }
 
-void error(const char *msg)
-{
-    //TODO: wirklich error
-    __android_log_print(ANDROID_LOG_DEBUG, DEBUG_TAG, "NDK:LC:ERR: [%s], Errno: %i", msg, errno);
-}
-
-void debug(const char *msg)
+void logcatDebug(const char *msg)
 {
     __android_log_print(ANDROID_LOG_DEBUG, DEBUG_TAG, "NDK:LC:DBG: [%s]", msg);
 }
@@ -51,11 +40,11 @@ int Java_de_unikl_cs_disco_softenc_SoftencActivity_sendUrgent(JNIEnv * env, jobj
     struct hostent *server;
 
     char buffer[256];
-    debug("Opening Socket");
+    logcatDebug("Opening Socket");
     sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (sockfd < 0)
     {
-        error("ERROR opening socket");
+        logcatError("ERROR opening socket");
         return -1;
     }
 
@@ -70,14 +59,14 @@ int Java_de_unikl_cs_disco_softenc_SoftencActivity_sendUrgent(JNIEnv * env, jobj
     sockopterr = setsockopt(sockfd, SOL_SOCKET, flagname, (void *)&socketOptionEnabled, sizeof(socketOptionEnabled));
     if (sockopterr < 0)
     {
-        error("ERROR setting sockopt");
+        logcatError("ERROR setting sockopt");
         return -2;
     }
 
     server = gethostbyname(url);
     if (server == NULL)
     {
-        error("ERROR Host not found");
+        logcatError("ERROR Host not found");
         return -3;
     }
     bzero((char *) &serv_addr, sizeof(serv_addr));
@@ -88,13 +77,13 @@ int Java_de_unikl_cs_disco_softenc_SoftencActivity_sendUrgent(JNIEnv * env, jobj
     serv_addr.sin_port = htons(portno);
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
     {
-        error("ERROR connecting");
+        logcatError("ERROR connecting");
         return -4;
     }
     n = write(sockfd,data,strlen(data));
     if (n < 0)
     {
-         error("ERROR writing to socket");
+         logcatError("ERROR writing to socket");
     }
 
     close(sockfd);
