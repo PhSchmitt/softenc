@@ -23,30 +23,9 @@ public class SoftencActivity extends ActionBarActivity {
         System.loadLibrary("softenc");
     }
 
-    //    String rawDataString = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +
-//            "\n" +
-//            "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   \n" +
-//            "\n" +
-//            "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   \n" +
-//            "\n" +
-//            "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   \n" +
-//            "\n" +
-//            "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   \n" +
-//            "\n" +
-//            "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.   \n" +
-//            "\n" +
-//            "Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.   \n" +
-//            "\n" +
-//            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +
-//            "\n" +
-//            "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   \n" +
-//            "\n" +
-//            "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   \n" +
-//            "\n" +
-//            "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo";
-    String rawDataString = "1234";
-    String hostname = "mptcpsrv1.philippschmitt.de";
-    Integer port = 8080;
+    final String hostname = "mptcpsrv1.philippschmitt.de";
+    final Integer port = 8080;
+    final Integer maxPayloadLength = 372;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +37,8 @@ public class SoftencActivity extends ActionBarActivity {
         buttonData.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 //                 Perform action on click
+                String rawDataString = createRandomString();
+                Log.w("Send len: ", "" + rawDataString.length());
                 DataSet data = new DataSet(rawDataString.length());
                 data.fulldecryptedstream = rawDataString.toCharArray();
                 encryptStream(data);
@@ -66,6 +47,23 @@ public class SoftencActivity extends ActionBarActivity {
                 buttonData.setText("Data sent");
             }
         });
+    }
+
+    private String createRandomString() {
+        StringBuilder sb = new StringBuilder();
+        for (int blubb = 0; blubb < 10; blubb++) {
+            sb.append("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ");
+            sb.append("eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam ");
+            sb.append("voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet ");
+            sb.append("clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit ");
+            sb.append("amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ");
+            sb.append("nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ");
+            sb.append("sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ");
+            sb.append("Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor ");
+            sb.append("sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ");
+            sb.append("1234567890");
+        }
+        return sb.toString();
     }
 
     private void encryptStream(DataSet data) {
@@ -260,83 +258,190 @@ public class SoftencActivity extends ActionBarActivity {
 
     private void sendData(String asend, String bsend, String csend, String dsend)
     {
-        //TODO pktcntr
         boolean splitPackets = false;
-        // we need a 1 on the msb of the counter since leading zeros get lost in conversion/transmission
-        char dataIdAndPktCntr = 0x2000;
-        //only test for asend since len(asend)=len(bsend)=len(csend)=len(dsend)
-        if (asend.length()>372)
-        {
-            splitPackets = true;
-        }
+        final int stringLength = Math.max(asend.length(), Math.max(bsend.length(), Math.max(csend.length(), dsend.length())));
+        final int streamLength = (int) Math.ceil(stringLength / (double) maxPayloadLength);
+        String[] aStreams = new String[streamLength];
+        String[] bStreams = new String[streamLength];
+        String[] cStreams = new String[streamLength];
+        String[] dStreams = new String[streamLength];
+        /**
+         * Bits of dataIdLastStreamIndicatorAndPktCntr:
+         * Bit15=most left bit
+         * 15,14: dataId: 00=a' 01=b' 10=c' 11=d'
+         * 13: must be 1 since leading zeros (especially chars that only contain 0s) get lost in conversion/transmission
+         * 12: isLastStream: indicates whether this was the last stream of that dataId (1) of if there are following ones (0)
+         * 11-0: PacketCounter => only 8191 packets are supported.
+         *
+         * Init: Bit 13 set, all others 0
+         */
+        char dataIdLastStreamIndicatorAndPktCntr = 0x2000;
+        final char maskToClearDataId = 0x3fff;
 
-        try {
-            if (splitPackets)
+        if (stringLength > maxPayloadLength) {
+            //TODO: works without splitting => fix splitting (or maybe recombination?)
+            //splitPackets = true;
+            int j = 0;
+            for (int i = 0; j < stringLength; i++)
             {
-                //TODO
+                aStreams[i] = asend.substring(j, Math.min(j + maxPayloadLength, asend.length()));
+                bStreams[i] = asend.substring(j, Math.min(j + maxPayloadLength, bsend.length()));
+                cStreams[i] = asend.substring(j, Math.min(j + maxPayloadLength, csend.length()));
+                dStreams[i] = asend.substring(j, Math.min(j + maxPayloadLength, dsend.length()));
+                j += maxPayloadLength;
             }
+        }
+        try {
+            if (!splitPackets) {
+                //set isLastStream to 1
+                dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
+                sendAprimePkt(asend, dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
 
-            //send aprimes
-            Log.d("Softenc", "Trying to send aprimes");
-            //set dataId to 00 (=a)
-            // is same to cleared
-            char maskToClearDataId = 0x3fff;
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr, maskToClearDataId, and);
-            int errorcode = sendUrgent(hostname, port, dataIdAndPktCntr + asend, false);
-            if (0 == errorcode) {
-                Log.d("Softenc", "aprimes sent successfully");
-            } else {
-                Log.e("Softenc", "Error in sending aprimes. Error code: " + errorcode);
-            }
+                // TODO we let the server the time to open a new socket - should be deleted as soon as the Server listens continuously
+                Thread.sleep(100);
+                sendBprimePkt(bsend, dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
 
-            Thread.sleep(100);
+                Thread.sleep(100);
+                sendCprimePkt(csend, dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
 
-            //send bprimes
-            Log.d("Softenc", "Trying to send bprimes");
-            //set dataId to 01 (=b)
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
-            char maskBprimeStream = 0x4000;
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskBprimeStream,or);
-            errorcode = sendUrgent(hostname, port, dataIdAndPktCntr + bsend, false);
-            if (0 == errorcode) {
-                Log.d("Softenc", "bprimes sent successfully");
-            } else {
-                Log.e("Softenc", "Error in sending bprimes. Error code: " + errorcode);
-            }
+                Thread.sleep(100);
+                sendDprimePkt(dsend, dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
+            } else //splitPackages
+            {
+                for (int i = 0; i < aStreams.length; i++) {
+                    if (aStreams.length - 1 == i) //is last stream => set last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
+                    } else //is not last stream => clear last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xEFFF), and);
+                    }
+                    int pktCntr = i;
+                    //ensure that only at most 12 bit are set
+                    pktCntr &= 0xFFF;
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xF000), and);
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) pktCntr, or);
+                    // TODO we let the server the time to open a new socket - should be deleted as soon as the Server listens continuously
+                    Thread.sleep(100);
+                    sendAprimePkt(aStreams[i], dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
 
-            Thread.sleep(100);
-
-            //send cprimes
-            Log.d("Softenc", "Trying to send cprimes");
-            //set dataId to 10 (=c)
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
-            char maskCprimeStream = 0x8000;
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskCprimeStream,or);
-            errorcode = sendUrgent(hostname, port,dataIdAndPktCntr + csend, false);
-            if (0 == errorcode) {
-                Log.d("Softenc", "cprimes sent successfully");
-            } else {
-                Log.e("Softenc", "Error in sending cprimes. Error code: " + errorcode);
-            }
-
-            Thread.sleep(100);
-
-            //send dprimes
-            Log.d("Softenc", "Trying to send dprimes");
-            //set dataId to 11 (=d)
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskToClearDataId,and);
-            char maskDprimeStream = 0xC000;
-            dataIdAndPktCntr = maskChar(dataIdAndPktCntr,maskDprimeStream,or);
-            errorcode = sendUrgent(hostname, port, dataIdAndPktCntr + dsend, true);
-            if (0 == errorcode) {
-                Log.d("Softenc", "dprimes sent successfully");
-            } else {
-                Log.e("Softenc", "Error in sending dprimes. Error code: " + errorcode);
+                }
+                for (int i = 0; i < bStreams.length; i++) {
+                    if (bStreams.length - 1 == i) //is last stream => set last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
+                    } else //is not last stream => clear last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xEFFF), and);
+                    }
+                    int pktCntr = i;
+                    //ensure that only at most 12 bit are set
+                    pktCntr &= 0xFFF;
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xF000), and);
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) pktCntr, or);
+                    // TODO we let the server the time to open a new socket - should be deleted as soon as the Server listens continuously
+                    Thread.sleep(100);
+                    sendBprimePkt(bStreams[i], dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
+                }
+                for (int i = 0; i < cStreams.length; i++) {
+                    if (cStreams.length - 1 == i) //is last stream => set last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
+                    } else //is not last stream => clear last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xEFFF), and);
+                    }
+                    int pktCntr = i;
+                    //ensure that only at most 12 bit are set
+                    pktCntr &= 0xFFF;
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xF000), and);
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) pktCntr, or);
+                    // TODO we let the server the time to open a new socket - should be deleted as soon as the Server listens continuously
+                    Thread.sleep(100);
+                    sendCprimePkt(cStreams[i], dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
+                }
+                for (int i = 0; i < dStreams.length; i++) {
+                    if (dStreams.length - 1 == i) //is last stream => set last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
+                    } else //is not last stream => clear last stream bit
+                    {
+                        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xEFFF), and);
+                    }
+                    int pktCntr = i;
+                    //ensure that only at most 12 bit are set
+                    pktCntr &= 0xFFF;
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0xF000), and);
+                    dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) pktCntr, or);
+                    // TODO we let the server the time to open a new socket - should be deleted as soon as the Server listens continuously
+                    Thread.sleep(100);
+                    sendDprimePkt(dStreams[i], dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void sendDprimePkt(String dsend, char dataIdLastStreamIndicatorAndPktCntr, char maskToClearDataId) {
+        //send dprimes
+        Log.d("Softenc", "Trying to send dprimes");
+        //set dataId to 11 (=d)
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
+        char maskDprimeStream = 0xC000;
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskDprimeStream, or);
+        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + dsend, true);
+        if (0 == errorcode) {
+            Log.d("Softenc", "dprimes sent successfully");
+        } else {
+            Log.e("Softenc", "Error in sending dprimes. Error code: " + errorcode);
+        }
+    }
+
+    private void sendCprimePkt(String csend, char dataIdLastStreamIndicatorAndPktCntr, char maskToClearDataId) {
+        //send cprimes
+        Log.d("Softenc", "Trying to send cprimes");
+        //set dataId to 10 (=c)
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
+        char maskCprimeStream = 0x8000;
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskCprimeStream, or);
+        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + csend, false);
+        if (0 == errorcode) {
+            Log.d("Softenc", "cprimes sent successfully");
+        } else {
+            Log.e("Softenc", "Error in sending cprimes. Error code: " + errorcode);
+        }
+    }
+
+    private void sendBprimePkt(String bsend, char dataIdLastStreamIndicatorAndPktCntr, char maskToClearDataId) {
+        //send bprimes
+        Log.d("Softenc", "Trying to send bprimes");
+        //set dataId to 01 (=b)
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
+        char maskBprimeStream = 0x4000;
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskBprimeStream, or);
+        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + bsend, false);
+        if (0 == errorcode) {
+            Log.d("Softenc", "bprimes sent successfully");
+        } else {
+            Log.e("Softenc", "Error in sending bprimes. Error code: " + errorcode);
+        }
+    }
+
+    private void sendAprimePkt(String asend, char dataIdLastStreamIndicatorAndPktCntr, char maskToClearDataId) {
+        //send aprimes
+        Log.d("Softenc", "Trying to send aprimes");
+        //set dataId to 00 (=a)
+        // is same to cleared
+        dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
+        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + asend, false);
+        if (0 == errorcode) {
+            Log.d("Softenc", "aprimes sent successfully");
+        } else {
+            Log.e("Softenc", "Error in sending aprimes. Error code: " + errorcode);
+        }
+    }
+
     public enum Direction
     {
         left,
