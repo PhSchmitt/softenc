@@ -17,12 +17,12 @@
 
 void logcatError(const char *msg)
 {
-    __android_log_print(ANDROID_LOG_ERROR, DEBUG_TAG, "NDK:LC:ERR: [%s], Errno: %i", msg, errno);
+    __android_log_print(ANDROID_LOG_ERROR, DEBUG_TAG, "Send ERR: [%s], Errno: %i", msg, errno);
 }
 
 void logcatDebug(const char *msg)
 {
-    __android_log_print(ANDROID_LOG_DEBUG, DEBUG_TAG, "NDK:LC:DBG: [%s]", msg);
+    __android_log_print(ANDROID_LOG_DEBUG, DEBUG_TAG, "Send DBG: [%s]", msg);
 }
 
 // source: http://www.linuxhowtos.org/C_C++/socket.htm
@@ -33,8 +33,6 @@ int Java_de_unikl_cs_disco_softenc_SoftencActivity_sendUrgent(JNIEnv * env, jobj
     const char * url = (*env)->GetStringUTFChars(env, jurl, &isCopy);
     const char * data = (*env)->GetStringUTFChars(env, jdata, &isCopy);
     const int flagname = SO_OOBINLINE;
-    //const int flagname = 1337;
-
     int sockfd , sockopterr, socketOptionEnabled, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;

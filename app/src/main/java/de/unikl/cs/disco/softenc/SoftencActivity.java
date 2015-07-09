@@ -3,8 +3,6 @@ package de.unikl.cs.disco.softenc;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -43,14 +41,14 @@ public class SoftencActivity extends ActionBarActivity {
                 encryptStream(data);
                 combineData(data);
                 sendData(new String(data.aprimes), new String(data.bprimes), new String(data.cprimes), new String(data.dprimes));
-                buttonData.setText("Data sent");
+                buttonData.setText("Data sent - Send again?");
             }
         });
     }
 
     private String createRandomString() {
         StringBuilder sb = new StringBuilder();
-        for (int blubb = 0; blubb < 10; blubb++) {
+        for (int i = 0; i < 10; i++) {
             sb.append("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ");
             sb.append("eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam ");
             sb.append("voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet ");
@@ -60,7 +58,7 @@ public class SoftencActivity extends ActionBarActivity {
             sb.append("sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ");
             sb.append("Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor ");
             sb.append("sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ");
-            sb.append("1234567890");
+            sb.append("1234567890\n");
         }
         return sb.toString();
     }
@@ -71,29 +69,6 @@ public class SoftencActivity extends ActionBarActivity {
             data.fullencryptedstream[i] = encryptData(data.fulldecryptedstream[i]);
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_android_ndk1_sample, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private native int sendUrgent(String jurl, int portno, String jdata, boolean jSetUrgentFlag);
 
     private char encryptData (char rawChar)
@@ -151,9 +126,12 @@ public class SoftencActivity extends ActionBarActivity {
             char maskSecond = 0xF0FF;
             char maskThird = 0xFF0F;
             char maskFourth = 0xFFF0;
-            //TODO: explain what's happening here
+
             /**
-             *
+             * extract a' to d' out of every char (data.fullencryptedstream[i]) by using the masks shown above
+             * Create new array a' that only contains a's (same with b' c'd')
+             * To save space, put 4 a's into one char of the new array.
+             * To achieve this, we need to shift and mask to get the bits to the right position in the char
              */
             switch (i%4) {
                 case 0:
@@ -215,9 +193,7 @@ public class SoftencActivity extends ActionBarActivity {
                     j++;
                     break;
                 }
-
         }
-
     }
 
     public char shiftBits(char toShift, int shiftcount, Direction direction)
@@ -274,7 +250,7 @@ public class SoftencActivity extends ActionBarActivity {
                 dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
             sendAprimePkt(asend, dataIdLastStreamIndicatorAndPktCntr);
 
-                // TODO we let the server the time to open a new socket - should be deleted as soon as the Server listens continuously
+            //we let the server the time to open a new socket
                 Thread.sleep(100);
             sendBprimePkt(bsend, dataIdLastStreamIndicatorAndPktCntr);
 
@@ -383,8 +359,6 @@ public class SoftencActivity extends ActionBarActivity {
             fullencryptedstream = new char[arraylength];
             fulldecryptedstream = new char[arraylength];
         }
-
     }
-
 }
 

@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".SoftencActivity"
-            android:label="@string/title_activity_android_ndk1_sample" >
+            android:label="@string/title_SoftEncryption">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

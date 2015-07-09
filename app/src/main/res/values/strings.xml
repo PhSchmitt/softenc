@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">Ndk1</string>
-    <string name="title_activity_android_ndk1_sample">AndroidNDK1SampleActivity</string>
+    <string name="app_name">SoftEncryption</string>
+    <string name="title_SoftEncryption">SoftEncryption</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>
