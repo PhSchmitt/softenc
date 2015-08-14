@@ -24,7 +24,8 @@ public class SoftencActivity extends ActionBarActivity {
     //constants
     final String hostname = "mptcpsrv1.philippschmitt.de";
     final Integer port = 8080;
-    final char maskToClearDataId = 0x3fff;
+    final char maskToClearDataId = (char) 0x3fff;
+    final char finchar = (char) 0xFFFF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +59,10 @@ public class SoftencActivity extends ActionBarActivity {
             sb.append("sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ");
             sb.append("Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor ");
             sb.append("sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ");
-            sb.append("1234567890\n");
+            sb.append("1234567890 abcdefghijklmnopqrstuvwxyz\n");
         }
         return sb.toString();
+
     }
 
     private void encryptStream(DataSet data) {
@@ -69,7 +71,6 @@ public class SoftencActivity extends ActionBarActivity {
             data.fullencryptedstream[i] = encryptData(data.fulldecryptedstream[i]);
         }
     }
-    private native int sendUrgent(String jurl, int portno, String jdata, boolean jSetUrgentFlag);
 
     private char encryptData (char rawChar)
     {
@@ -246,19 +247,14 @@ public class SoftencActivity extends ActionBarActivity {
         char dataIdLastStreamIndicatorAndPktCntr = 0x2000;
 
         try {
+            openConnection(hostname, port);
                 //set isLastStream to 1
                 dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, (char) (0x1000), or);
             sendAprimePkt(asend, dataIdLastStreamIndicatorAndPktCntr);
-
-            //we let the server the time to open a new socket
-                Thread.sleep(100);
             sendBprimePkt(bsend, dataIdLastStreamIndicatorAndPktCntr);
-
-                Thread.sleep(100);
             sendCprimePkt(csend, dataIdLastStreamIndicatorAndPktCntr);
-
-                Thread.sleep(100);
             sendDprimePkt(dsend, dataIdLastStreamIndicatorAndPktCntr);
+            closeConnection();
             } catch (Exception e) {
             e.printStackTrace();
         }
@@ -271,7 +267,7 @@ public class SoftencActivity extends ActionBarActivity {
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
         char maskDprimeStream = 0xC000;
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskDprimeStream, or);
-        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + dsend, true);
+        int errorcode = sendNative(dataIdLastStreamIndicatorAndPktCntr + dsend + finchar + finchar, true);
         if (0 == errorcode) {
             Log.d("Softenc", "dprimes sent successfully");
         } else {
@@ -286,7 +282,7 @@ public class SoftencActivity extends ActionBarActivity {
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
         char maskCprimeStream = 0x8000;
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskCprimeStream, or);
-        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + csend, false);
+        int errorcode = sendNative(dataIdLastStreamIndicatorAndPktCntr + csend + finchar + finchar, false);
         if (0 == errorcode) {
             Log.d("Softenc", "cprimes sent successfully");
         } else {
@@ -301,7 +297,7 @@ public class SoftencActivity extends ActionBarActivity {
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
         char maskBprimeStream = 0x4000;
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskBprimeStream, or);
-        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + bsend, false);
+        int errorcode = sendNative(dataIdLastStreamIndicatorAndPktCntr + bsend + finchar + finchar, false);
         if (0 == errorcode) {
             Log.d("Softenc", "bprimes sent successfully");
         } else {
@@ -315,7 +311,7 @@ public class SoftencActivity extends ActionBarActivity {
         //set dataId to 00 (=a)
         // is same to cleared
         dataIdLastStreamIndicatorAndPktCntr = maskChar(dataIdLastStreamIndicatorAndPktCntr, maskToClearDataId, and);
-        int errorcode = sendUrgent(hostname, port, dataIdLastStreamIndicatorAndPktCntr + asend, false);
+        int errorcode = sendNative(dataIdLastStreamIndicatorAndPktCntr + asend + finchar + finchar, false);
         if (0 == errorcode) {
             Log.d("Softenc", "aprimes sent successfully");
         } else {
@@ -360,5 +356,35 @@ public class SoftencActivity extends ActionBarActivity {
             fulldecryptedstream = new char[arraylength];
         }
     }
+
+    private native int openConnection(String jurl, int portno);
+
+    private native int sendNative(String jdata, Boolean jSetUrgentFlag);
+
+    private class DataSet {
+
+        public char[] aprimes;
+        public char[] bprimes;
+        public char[] cprimes;
+        public char[] dprimes;
+        public char[] fullencryptedstream;
+        public char[] fulldecryptedstream;
+
+        /**
+         * @param arraylength = raw data length
+         */
+        public DataSet(int arraylength) {
+            //ensure that we have enough elements if not dividable by 4
+            aprimes = new char[(int) Math.ceil(arraylength / 4.0)];
+            bprimes = new char[(int) Math.ceil(arraylength / 4.0)];
+            cprimes = new char[(int) Math.ceil(arraylength / 4.0)];
+            dprimes = new char[(int) Math.ceil(arraylength / 4.0)];
+            fullencryptedstream = new char[arraylength];
+            fulldecryptedstream = new char[arraylength];
+        }
+    }
+
+    private native int closeConnection();
+
 }
 
